@@ -23,6 +23,19 @@ def third_anagram?(word_1, word_2)
     word_1.split("").sort == word_2.split("").sort
 end
 
-p third_anagram?("gizmo", "sally")    #=> false
-p third_anagram?("elvis", "lives")    #=> true
+#p third_anagram?("gizmo", "sally")    #=> false
+#p third_anagram?("elvis", "lives")    #=> true
 
+
+def fourth_anagram?(word_1, word_2)
+    count = Hash.new(0)
+
+    word_1.each_char {|char| count[char] += 1 }
+    word_2.each_char {|char| count[char] -= 1 }
+
+    return count.values.all? {|v| v == 0}
+
+end
+
+# p fourth_anagram?('gizmo', 'sally')
+# p fourth_anagram?('elvis', 'lives')
