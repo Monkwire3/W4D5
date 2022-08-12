@@ -30,5 +30,20 @@ def largest_contiguous_subsum(arr)
 
 end
 
-p largest_contiguous_subsum(list) # => 8
+def largest_contiguous_subsum_efficient(arr)
+    largest_sum = arr[0]
+    curr_sum = 0
 
+    arr.length.times do |i|
+        curr_sum += arr[i]
+        if curr_sum > largest_sum
+            largest_sum = curr_sum
+        end
+
+        curr_sum = 0 if curr_sum < 0
+    end
+
+    return largest_sum
+end
+
+p largest_contiguous_subsum_efficient([-5, -1, -3, 2, 5, -1, 3])
